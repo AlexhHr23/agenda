@@ -1,3 +1,4 @@
+import 'package:agenda/pages/detalle.dart';
 import 'package:agenda/pages/formulario.dart';
 import 'package:agenda/pages/home_page.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomePage.nombrePagina: (BuildContext context) => HomePage(),
         FormularioPage.nombrePagina: (BuildContext context) => FormularioPage(),
+        DetallePage.nombrePagina: (BuildContext context) => DetallePage()
       },
     );
   }

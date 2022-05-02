@@ -1,8 +1,9 @@
+import 'package:agenda/pages/detalle.dart';
 import 'package:agenda/pages/formulario.dart';
 import 'package:agenda/providers/contactos_providers.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   static final nombrePagina = "home";
@@ -21,6 +22,11 @@ class HomePage extends StatelessWidget {
   ];
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -28,7 +34,7 @@ class HomePage extends StatelessWidget {
       ),
       body: (ContactosProvider().contactos.isNotEmpty)
           ? ListView(
-              children: _crearContacto(),
+              children: _crearContacto(context),
             )
           : Center(
               child: Text("No hay contactos agredados"),
@@ -41,11 +47,13 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  List<Widget> _crearContacto() {
+  List<Widget> _crearContacto(BuildContext context) {
     List<Widget> temporal = [];
 
     for (Map<String, dynamic> contacto in ContactosProvider().contactos) {
       Widget nuevo = ListTile(
+        onTap: () => Navigator.pushNamed(context, DetallePage.nombrePagina,
+            arguments: contacto),
         title: Text("${contacto['nombre']}"),
         trailing: Icon(
           Icons.account_circle,

@@ -82,7 +82,7 @@ class _FormularioPageState extends State<FormularioPage> {
   _creaInputTelefono() {
     return TextFormField(
       onSaved: (valor) {
-        nuevoContacto['email'] = valor;
+        nuevoContacto['telefono'] = valor;
       },
       keyboardType: TextInputType.number,
       textInputAction: TextInputAction.next,

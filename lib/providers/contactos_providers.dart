@@ -18,4 +18,8 @@ class ContactosProvider {
   void agregarContacto(Map<String, dynamic> nuevoContacto) {
     _contactos.add(nuevoContacto);
   }
+
+  void eliminarContacto(Map<String, dynamic> borrarContacto) {
+    _contactos.remove(borrarContacto);
+  }
 }
